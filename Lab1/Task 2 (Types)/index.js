@@ -1,13 +1,14 @@
 'use strict';
 
-const typeArray = [true, 'hello', 5, 12, -200, false, false, 'word', 'random', 8, true, 'test', -50, 100, false, 'code', true, 3, 7, -10, 'assist', false, 'value', true, 55, -80, 'string', 20, true, 'example', -30, 40, false, 15, 'q', true, 25, -60, 'data', 70, false, 'output'];
+const typeArray = [42, "hello", true, null, 3.14, -7, "world", false, undefined, Symbol("random"), BigInt(1234567890), NaN, 0, "javascript", -Infinity, 2n, Symbol.for("registered"), 1e10, "", -0, "🎉", Number.MAX_SAFE_INTEGER, false, "   ", Number.MIN_SAFE_INTEGER, BigInt("9007199254740991"), true, "\t\n", Number.EPSILON, Symbol("unique"), "123", Infinity, null, -3.14159265359, "array"]
 
-const typeCounter = {number: 0, string: 0, boolean: 0}
+const typeCounter = {};
 
 
 const countTypesInArray = (array, counter) => {
     for (const value of array) {
-        counter[typeof value]++;
+        const type = typeof value;
+        type in counter ? counter[type]++ : counter[type] = 1;
     }
     return counter;
 }
